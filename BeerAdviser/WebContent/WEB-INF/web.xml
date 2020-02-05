@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>BeerAdviser</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+  <servlet-name>bs</servlet-name>
+  <servlet-class>beeradv.clint.BeerSelector</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>bs</servlet-name>
+  <url-pattern>/BeerSelector</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>bac</servlet-name>
+  <servlet-class>beeradv.model.CreateBeerAdv</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>bac</servlet-name>
+  <url-pattern>/bac</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>al</servlet-name>
+  <servlet-class>beeradv.admin.Adminlogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>al</servlet-name>
+  <url-pattern>/al</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  <servlet-name>cs</servlet-name>
+  <servlet-class>beeradv.clint.ClintSignup</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>cs</servlet-name>
+  <url-pattern>/cs</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  <servlet-name>cl</servlet-name>
+  <servlet-class>beeradv.clint.Clintlogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>cl</servlet-name>
+  <url-pattern>/cl</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  <servlet-name>home</servlet-name>
+  <servlet-class>beeradv.domain.BeerAdvice</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>home</servlet-name>
+  <url-pattern></url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  <servlet-name>topayments</servlet-name>
+  <servlet-class>beeradv.payments.ToPaymentsApp</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>topayments</servlet-name>
+  <url-pattern>/tp</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
