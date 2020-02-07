@@ -1,4 +1,4 @@
-package jspiders.admin;
+package jspiders.student;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,11 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import jspiders.dbo.DbConnection;
 
-public class AdminLogin extends HttpServlet {
+public class StudentHallticket extends HttpServlet {
 
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 		
 		 ServletContext sct = getServletContext(); 
 		 String dburl =
@@ -28,41 +28,30 @@ public class AdminLogin extends HttpServlet {
 		 sct.getInitParameter("dbname"); 
 		 String user = sct.getInitParameter("user");
 		 String password = sct.getInitParameter("password");
-		 
 
-		
 		  Connection con =
 	DbConnection.getConnection(dburl, dbname, user, password);
 		  try { 
-			  login(con, req, resp); 
+			  showHC(con, req, resp); 
 			} catch (SQLException e) { 
 		 e.printStackTrace(); }
-		 
-
 	}
-
-	public void login(Connection con, HttpServletRequest req, HttpServletResponse resp)
-			throws SQLException, IOException, ServletException {
+	public void showHC(Connection con, HttpServletRequest req, HttpServletResponse resp)
+			throws SQLException, IOException {
 		PrintWriter o = resp.getWriter();
-		String email = req.getParameter("username");
-		o.println(email);
-		String password = req.getParameter("password");
-		o.println(password);
-		String query = "select apassword from admin where aemail=?";
+		String email = req.getParameter("email");
+		String query = "select shc from hc where semail=?";
 		PreparedStatement ps = con.prepareStatement(query);
 		ps.setString(1, email);
 		ResultSet eq = ps.executeQuery();
 		if (eq.next()) {
-			String apassword = eq.getString("apassword");
-			if (apassword.equals(password)) {
-				req.getRequestDispatcher("adminhome.html").
-				forward(req, resp);
-			} else {
-				o.println("Invalid password");
-			}
-		} else {
-			o.println("Invalid email");
+			Integer shc = eq.getInt("shc");
+			
+				o.println("Your Hallticket number is "+shc);
+				o.print(email);
+			
 		}
+		
 	}
 
 }

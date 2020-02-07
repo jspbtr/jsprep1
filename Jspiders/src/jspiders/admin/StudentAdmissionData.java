@@ -1,4 +1,4 @@
-package jspiders.student;
+package jspiders.admin;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import jspiders.dbo.DbConnection;
 
-public class StudentSignup extends HttpServlet {
+public class StudentAdmissionData extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,46 +30,29 @@ public class StudentSignup extends HttpServlet {
 	    Connection con = 
 	DbConnection.getConnection(dburl, dbname, user, password);
 	try {
-		signup(con, req, resp);
+		addsrc(con, req, resp);
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}
 	
 	}
-     public void signup(Connection con,HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException {
+     public void addsrc(Connection con,HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ServletException {
     	 PrintWriter o = resp.getWriter();
     	 String semail = req.getParameter("username");
-    	 String sname = req.getParameter("studentname");
-    	 String spassword = req.getParameter("password");
+    	 String sname = req.getParameter("name");
     	 
-    	 String query = "insert into student values(?,?,?)";
+    	 String query = "insert into src values(?,?)";
     	 
     	 PreparedStatement ps = con.prepareStatement(query);
          ps.setString(1, semail);
-         ps.setString(2, spassword);
-         ps.setString(3, sname);
+         ps.setString(2, sname);
          
          int eu = ps.executeUpdate();
          System.out.println(eu);
          if (eu!=0) {
-			o.println("signup successfull");
+			req.getRequestDispatcher("adminhome.html").forward(req, resp);
 		}else {
 			o.print("signup unsuccessfull");
 		}
-         
-         
-     
-     
-     
-     
-     }
 }
-
-
-
-
-
-
-
-
-
+}

@@ -13,35 +13,30 @@
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 
-	<!-- <servlet>
-		<servlet-name></servlet-name>
-		<servlet-class></servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name></servlet-name>
-		<url-pattern></url-pattern>
-	</servlet-mapping> -->
-	
+	<!-- <servlet> <servlet-name></servlet-name> <servlet-class></servlet-class> 
+		</servlet> <servlet-mapping> <servlet-name></servlet-name> <url-pattern></url-pattern> 
+		</servlet-mapping> -->
+
 	<context-param>
-	<param-name>dburl</param-name>
-	<param-value>jdbc:mysql://localhost:3306/</param-value>
+		<param-name>dburl</param-name>
+		<param-value>jdbc:mysql://localhost:3306/</param-value>
 	</context-param>
-	
+
 	<context-param>
-	<param-name>dbname</param-name>
-	<param-value>jspiders</param-value>
+		<param-name>dbname</param-name>
+		<param-value>jspiders</param-value>
 	</context-param>
-	
+
 	<context-param>
-	<param-name>user</param-name>
-	<param-value>root</param-value>
+		<param-name>user</param-name>
+		<param-value>root</param-value>
 	</context-param>
-	
+
 	<context-param>
-	<param-name>password</param-name>
-	<param-value>root</param-value>
+		<param-name>password</param-name>
+		<param-value>root</param-value>
 	</context-param>
-	
+
 	<servlet>
 		<servlet-name>adminlogin</servlet-name>
 		<servlet-class>jspiders.admin.AdminLogin</servlet-class>
@@ -50,7 +45,7 @@
 		<servlet-name>adminlogin</servlet-name>
 		<url-pattern>/adminlogin</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>studentlogin</servlet-name>
 		<servlet-class>jspiders.student.StudentLogin</servlet-class>
@@ -59,7 +54,7 @@
 		<servlet-name>studentlogin</servlet-name>
 		<url-pattern>/studentlogin</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>studentsignup</servlet-name>
 		<servlet-class>jspiders.student.StudentSignup</servlet-class>
@@ -68,6 +63,34 @@
 		<servlet-name>studentsignup</servlet-name>
 		<url-pattern>/studentsignup</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>gh</servlet-name>
+		<servlet-class>jspiders.admin.GenerateHallticket</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>gh</servlet-name>
+		<url-pattern>/gh</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>sad</servlet-name>
+		<servlet-class>jspiders.admin.StudentAdmissionData</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>sad</servlet-name>
+		<url-pattern>/sad</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>shc</servlet-name>
+		<servlet-class>jspiders.student.StudentHallticket</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>shc</servlet-name>
+		<url-pattern>/shc</url-pattern>
+	</servlet-mapping>
+
 </web-app>
 
 

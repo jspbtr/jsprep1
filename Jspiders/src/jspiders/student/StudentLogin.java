@@ -42,25 +42,25 @@ public class StudentLogin extends HttpServlet {
 	}
 
 	public void login(Connection con, HttpServletRequest req, HttpServletResponse resp)
-			throws SQLException, IOException {
+			throws SQLException, IOException, ServletException {
 		PrintWriter o = resp.getWriter();
 		String email = req.getParameter("username");
 		String password = req.getParameter("password");
-		String query = "select spassword from sdata where semail=?";
+		String query = "select spassword from student where semail=?";
 		PreparedStatement ps = con.prepareStatement(query);
 		ps.setString(1, email);
 		ResultSet eq = ps.executeQuery();
 		if (eq.next()) {
 			String apassword = eq.getString("spassword");
 			if (apassword.equals(password)) {
-				o.println("Login success");
+				req.getRequestDispatcher("studenthome.html").forward(req, resp);
 			} else {
 				o.println("Invalid password");
 			}
 		} else {
 			o.println("Invalid email");
 		}
-		con.close();
+		
 	}
 
 }
