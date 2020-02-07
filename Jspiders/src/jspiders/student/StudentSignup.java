@@ -29,6 +29,11 @@ public class StudentSignup extends HttpServlet {
 	
 	    Connection con = 
 	DbConnection.getConnection(dburl, dbname, user, password);
+	try {
+		signup(con, req, resp);
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
 	
 	}
      public void signup(Connection con,HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException {
